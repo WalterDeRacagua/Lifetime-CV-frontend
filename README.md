@@ -1,9 +1,12 @@
 # 🎨 Lifetime-CV Frontend
 
+[🇬🇧 English](README.md) | [🇪🇸 Español](README.es.md) | [🇫🇷 Français](README.fr.md) | [🇩🇪 Deutsch](README.de.md)
+
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Angular](https://img.shields.io/badge/angular-18.x-red.svg)
 ![TypeScript](https://img.shields.io/badge/typescript-5.x-blue.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)
+![NgRx](https://img.shields.io/badge/ngrx-18.x-purple.svg)
 
 Modern, multilingual CV showcase application built with Angular. Features dynamic content management, smooth animations, and a responsive design.
 
@@ -56,7 +59,7 @@ This frontend connects to the [Lifetime-CV Backend](https://github.com/YOUR_GITH
 - **Framework:** Angular 18.x
 - **Language:** TypeScript 5.x
 - **Styling:** SCSS + Tailwind CSS
-- **State Management:** NgRx / RxJS
+- **State Management:** NgRx (Store, Effects, Entity)
 - **Forms:** Reactive Forms
 - **HTTP Client:** HttpClient with Interceptors
 - **Routing:** Angular Router with guards
@@ -65,7 +68,7 @@ This frontend connects to the [Lifetime-CV Backend](https://github.com/YOUR_GITH
 - **Charts:** Chart.js / ng2-charts
 - **Icons:** Font Awesome / Material Icons
 - **Testing:** Jest + Angular Testing Library
-- **E2E Testing:** Cypress / Playwright
+- **E2E Testing:** Cypress
 - **Code Quality:** ESLint + Prettier
 - **Build Tool:** Angular CLI + Webpack
 
@@ -213,6 +216,12 @@ Lifetime-CV-frontend/
 │   │   │   ├── directives/          # Custom directives
 │   │   │   ├── pipes/               # Custom pipes
 │   │   │   └── validators/          # Custom form validators
+│   │   ├── store/                   # NgRx state management
+│   │   │   ├── actions/             # Actions
+│   │   │   ├── reducers/            # Reducers
+│   │   │   ├── effects/             # Effects (side effects)
+│   │   │   ├── selectors/           # Selectors
+│   │   │   └── models/              # State models
 │   │   ├── features/                # Feature modules
 │   │   │   ├── home/                # Landing page
 │   │   │   ├── about/               # About section
@@ -252,7 +261,12 @@ Lifetime-CV-frontend/
 ├── tests/                           # Test files
 │   ├── unit/                        # Unit tests
 │   ├── integration/                 # Integration tests
-│   └── e2e/                         # E2E tests
+│   └── e2e/                         # E2E tests (Cypress)
+│       ├── fixtures/                # Test data
+│       ├── integration/             # Test specs
+│       └── support/                 # Support files
+├── cypress/                         # Cypress configuration
+│   └── cypress.config.ts            # Cypress config file
 ├── .github/                         # GitHub Actions workflows
 │   └── workflows/
 │       ├── ci.yml                   # CI pipeline

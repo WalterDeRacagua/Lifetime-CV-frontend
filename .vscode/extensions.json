@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    "angular.ng-template",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens",
+    "usernamehw.errorlens",
+    "pkief.material-icon-theme",
+    "johnpapa.angular2",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense",
+    "wayou.vscode-todo-highlight",
+    "oderwat.indent-rainbow",
+    "alexcvzz.vscode-sqlite",
+    "ms-azuretools.vscode-docker",
+    "yzhang.markdown-all-in-one"
+  ]
+}

@@ -8,5 +8,12 @@
   "editor.insertSpaces": true,
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "files.autoSave": "onFocusChange"
+  "files.autoSave": "onFocusChange",
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#a80021",
+    "titleBar.activeBackground": "#dd0031",
+    "titleBar.activeForeground": "#ffffff",
+    "statusBar.background": "#a80021",
+    "statusBar.foreground": "#ffffff"
+  }
 }

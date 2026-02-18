@@ -1,0 +1,128 @@
+@import '../../../../variables';
+
+.experiences-page {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+}
+
+.page-title {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $gray-900;
+  margin-bottom: $spacing-sm;
+}
+
+.page-description {
+  font-size: $font-size-lg;
+  color: $gray-600;
+}
+
+// Timeline customization
+:host ::ng-deep {
+  .custom-timeline {
+    .p-timeline-event-opposite {
+      display: none;
+    }
+
+    .p-timeline-event-separator {
+      align-items: flex-start;
+      padding-top: 0.5rem;
+    }
+  }
+}
+
+.timeline-marker {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: $primary-600;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-lg;
+  cursor: pointer;
+  transition: all $transition-base;
+  box-shadow: $shadow-md;
+
+  &:hover {
+    background: $primary-700;
+    transform: scale(1.1);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.timeline-content {
+  margin-left: $spacing-lg;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md;
+  background: white;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  transition: all $transition-fast;
+  box-shadow: $shadow-sm;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+.company-name {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $gray-900;
+  margin: 0;
+}
+
+.date-range {
+  font-size: $font-size-sm;
+  color: $gray-500;
+  margin: $spacing-xs 0 0;
+}
+
+.timeline-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+
+  &.expanded {
+    max-height: 500px;
+    margin-top: $spacing-md;
+  }
+}
+
+.position-title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $primary-600;
+  margin: 0 0 $spacing-sm;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  color: $gray-600;
+  font-size: $font-size-sm;
+  margin-bottom: $spacing-md;
+
+  i {
+    color: $primary-600;
+  }
+}
+
+.description {
+  color: $gray-600;
+  line-height: 1.7;
+  margin: 0;
+}

@@ -1,1 +1,44 @@
-<p>experiences works!</p>
+<div class="experiences-page">
+  <div class="page-header">
+    <h1 class="page-title">Experiencia Profesional</h1>
+    <p class="page-description">Mi trayectoria como desarrollador</p>
+  </div>
+
+  <p-timeline [value]="experiences" styleClass="custom-timeline">
+    <ng-template #marker let-experience>
+      <div class="timeline-marker" [pTooltip]="experience.position + ' en ' + experience.company" tooltipPosition="left"
+        (click)="toggleExpand(experience)" (keyup.enter)="toggleExpand(experience)"
+        (keyup.space)="toggleExpand(experience)" tabindex="0" role="button" [attr.aria-expanded]="experience.expanded"
+        [attr.aria-label]="'Expandir detalles de ' + experience.company">
+        <i class="pi pi-briefcase"></i>
+      </div>
+    </ng-template>
+
+    <ng-template #content let-experience>
+      <div class="timeline-content">
+        <!-- Header compacto -->
+        <div class="timeline-header" (click)="toggleExpand(experience)" (keyup.enter)="toggleExpand(experience)"
+          (keyup.space)="toggleExpand(experience)" tabindex="0" role="button" [attr.aria-expanded]="experience.expanded"
+          [attr.aria-label]="'Expandir detalles de ' + experience.company">
+          <div>
+            <h3 class="company-name">{{ experience.company }}</h3>
+            <p class="date-range">{{ experience.startDate }} - {{ experience.endDate }}</p>
+          </div>
+          <i [class]="experience.expanded ? 'pi pi-chevron-up' : 'pi pi-chevron-down'"></i>
+        </div>
+
+        <!-- Panel expandible -->
+        <div class="timeline-details" [class.expanded]="experience.expanded">
+          <p-card>
+            <h4 class="position-title">{{ experience.position }}</h4>
+            <p class="location">
+              <i class="pi pi-map-marker"></i>
+              {{ experience.location }}
+            </p>
+            <p class="description">{{ experience.description }}</p>
+          </p-card>
+        </div>
+      </div>
+    </ng-template>
+  </p-timeline>
+</div>

@@ -1,0 +1,10 @@
+@import '../../../../../../variables';
+
+.summary {
+  &-text {
+    font-size: $font-size-lg;
+    color: $gray-600;
+    line-height: 1.8;
+    max-width: 900px;
+  }
+}

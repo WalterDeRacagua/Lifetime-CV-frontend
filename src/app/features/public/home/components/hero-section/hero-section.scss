@@ -1,0 +1,32 @@
+@import '../../../../../../variables';
+
+.hero {
+  text-align: center;
+  padding: $spacing-3xl 0;
+
+  &-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &-title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: $gray-900;
+    margin-bottom: $spacing-sm;
+  }
+
+  &-subtitle {
+    font-size: $font-size-xl;
+    color: $primary-600;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-lg;
+  }
+
+  &-description {
+    font-size: $font-size-lg;
+    color: $gray-600;
+    line-height: 1.7;
+    margin-bottom: $spacing-xl;
+  }
+}

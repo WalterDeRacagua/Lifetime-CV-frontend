@@ -58,3 +58,36 @@ body {
 .p-menubar-item-icon {
   color: inherit;
 }
+
+// Navbar Responsive
+@media (max-width: #{$breakpoint-lg}) {
+  .p-menubar {
+    padding: $spacing-md $spacing-lg;
+
+    .p-menubar-start {
+      flex: 0 0 auto;
+    }
+
+    .p-menubar-button,
+    .p-menubar-end {
+      margin-left: auto;
+    }
+
+    .p-menubar-button {
+      order: 1;
+    }
+
+    .p-menubar-end {
+      order: 2;
+      margin-left: $spacing-md;
+    }
+  }
+
+  .p-menubar-root-list {
+    width: 100%;
+  }
+
+  .p-menubar-item-link {
+    padding: $spacing-md;
+  }
+}

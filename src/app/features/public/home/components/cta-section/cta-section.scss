@@ -1,0 +1,22 @@
+@import '../../../../../../variables';
+
+.cta {
+  background: white;
+  border-radius: $radius-xl;
+  padding: $spacing-3xl;
+  text-align: center;
+  box-shadow: $shadow-md;
+
+  &-title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $gray-900;
+    margin-bottom: $spacing-md;
+  }
+
+  &-description {
+    font-size: $font-size-lg;
+    color: $gray-600;
+    margin-bottom: $spacing-xl;
+  }
+}

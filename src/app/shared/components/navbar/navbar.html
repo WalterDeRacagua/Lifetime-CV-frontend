@@ -1,0 +1,11 @@
+<p-menubar [model]="items">
+  <ng-template #start>
+    <div class="brand">
+      <span class="brand-text">Lifetime CV</span>
+    </div>
+  </ng-template>
+
+  <ng-template #end>
+    <p-button label="Admin" icon="pi pi-lock" [outlined]="true" (onClick)="goToAdmin()" />
+  </ng-template>
+</p-menubar>

@@ -1,0 +1,17 @@
+@import '../../../../variables';
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $gray-900;
+  margin-right: $spacing-xl;
+  user-select: none;
+
+  i {
+    color: $primary-600;
+    font-size: $font-size-2xl;
+  }
+}

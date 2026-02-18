@@ -1,9 +1,11 @@
-// PrimeIcons (lo único que sigue siendo CSS tradicional)
+@import './variables';
+// PrimeIcons
 @import 'primeicons/primeicons.css';
 
 // PrimeFlex
 @import 'primeflex/primeflex.css';
 
+// Reset básico
 * {
   margin: 0;
   padding: 0;
@@ -11,5 +13,48 @@
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: $font-family;
+  font-size: $font-size-base;
+  background: $gray-50;
+  color: $gray-900;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Navbar
+.p-menubar {
+  background: white;
+  border: none;
+  border-bottom: 1px solid $gray-200;
+  box-shadow: $shadow-sm;
+  padding: $spacing-md $spacing-xl;
+  height: $navbar-height;
+}
+
+.p-menubar-root-list {
+  gap: $spacing-xs;
+}
+
+.p-menubar-item-link {
+  color: $gray-600;
+  border-radius: $radius-md;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-sm;
+  padding: $spacing-sm $spacing-md;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $gray-100;
+    color: $primary-600;
+  }
+}
+
+.p-menubar-item-link[aria-current='page'] {
+  color: $primary-600;
+  background: $primary-50;
+}
+
+.p-menubar-item-icon {
+  color: inherit;
 }

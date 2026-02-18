@@ -1,0 +1,24 @@
+@import '../../../../variables';
+
+.footer {
+  background: white;
+  border-top: 1px solid $gray-200;
+  padding: $spacing-xl;
+  height: $footer-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-content {
+  display: flex;
+  gap: $spacing-md;
+  align-items: center;
+  font-size: $font-size-sm;
+  color: $gray-500;
+}
+
+.separator {
+  color: $gray-300;
+  font-weight: $font-weight-normal;
+}

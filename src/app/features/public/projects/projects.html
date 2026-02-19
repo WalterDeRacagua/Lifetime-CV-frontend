@@ -1,1 +1,65 @@
-<p>projects works!</p>
+<div class="projects-page">
+  <div class="page-header">
+    <h1 class="page-title">Proyectos</h1>
+    <p class="page-description">Algunos de mis trabajos más destacados</p>
+  </div>
+
+  <!-- Bento Grid -->
+  <div class="bento-grid">
+    @for (project of projects; track project.id) {
+    <div [class]="'bento-item bento-item-' + project.id" (click)="openDialog(project)"
+      (keyup.enter)="openDialog(project)" (keyup.space)="openDialog(project)" tabindex="0" role="button"
+      [attr.aria-label]="'Ver detalles de ' + project.name">
+      <div class="bento-content" [style.background-image]="'url(' + project.imageUrl + ')'">
+        <div class="bento-overlay">
+          <div class="bento-info">
+            <h3 class="bento-title">{{ project.name }}</h3>
+            <p class="bento-description">{{ project.description }}</p>
+            <div class="flex flex-wrap gap-2">
+              @for (tech of project.technologies.slice(0, 3); track tech) {
+              <p-chip [label]="tech" styleClass="bento-chip" />
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+  <!-- Dialog -->
+  <p-dialog [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }"
+    [breakpoints]="{ '960px': '75vw', '640px': '90vw' }" [draggable]="false" [resizable]="false">
+    <ng-template #header>
+      <h3>{{ selectedProject()?.name }}</h3>
+    </ng-template>
+
+    @if (selectedProject(); as project) {
+    <div class="dialog-content">
+      <img [src]="project.imageUrl" [alt]="project.name" class="dialog-image" />
+
+      <p class="mb-3">{{ project.fullDescription }}</p>
+
+      <h4 class="mb-2">Tecnologías utilizadas:</h4>
+      <div class="flex flex-wrap gap-2 mb-4">
+        @for (tech of project.technologies; track tech) {
+        <p-chip [label]="tech" />
+        }
+      </div>
+
+      <div class="flex gap-2">
+        @if (project.demoUrl) {
+        <a [href]="project.demoUrl" target="_blank" rel="noopener noreferrer">
+          <p-button label="Ver Demo" icon="pi pi-external-link" />
+        </a>
+        }
+        @if (project.githubUrl) {
+        <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer">
+          <p-button label="Ver en GitHub" icon="pi pi-github" [outlined]="true" />
+        </a>
+        }
+      </div>
+    </div>
+    }
+  </p-dialog>
+</div>

@@ -1,1 +1,117 @@
-<p>contact works!</p>
+<div class="contact-page">
+  <div class="background-decoration">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+  </div>
+
+  <div class="contact-container">
+    <!-- Header -->
+    <div class="contact-header">
+      <h1 class="contact-title"> Contacto </h1>
+      <p class="contact-description">
+        ¿Tienes un proyecto en mente? ¡Hablemos! Estaré encantado de ayudarte.
+      </p>
+    </div>
+
+    <!-- Glassmorphism card -->
+    <div class="glass-card">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="form-grid">
+          <div class="form-field">
+            <p-floatlabel>
+              <input pInputText id="name" formControlName="name" [class.p-invalid]="isFieldInvalid('name')">
+              <label for="name">
+                <i class="pi pi-user"></i>
+                Nombre
+              </label>
+            </p-floatlabel>
+            @if(isFieldInvalid('name')){
+            <small class="error-message">
+              {{ getErrorMessage('name')}}
+            </small>
+            }
+          </div>
+
+          <div class="form-field">
+            <p-floatlabel>
+              <input pInputText id="email" type="email" formControlName="email"
+                [class.p-invalid]="isFieldInvalid('email')">
+              <label for="email">
+                <i class="pi pi-envelope"></i>
+                Email
+              </label>
+            </p-floatlabel>
+            @if(isFieldInvalid('email')){
+            <small class="error-message">
+              {{ getErrorMessage('email')}}
+            </small>
+            }
+          </div>
+          <!-- Asunto -->
+          <div class="form-field full-width">
+            <p-floatlabel>
+              <input pInputText id="subject" formControlName="subject" [class.p-invalid]="isFieldInvalid('subject')" />
+              <label for="subject">
+                <i class="pi pi-tag"></i>
+                Asunto
+              </label>
+            </p-floatlabel>
+            @if (isFieldInvalid('subject')) {
+            <small class="error-message">
+              {{ getErrorMessage('subject') }}
+            </small>
+            }
+          </div>
+          <!-- Mensaje -->
+          <div class="form-field full-width">
+            <p-floatlabel>
+              <textarea pTextarea id="message" formControlName="message" rows="6"
+                [class.p-invalid]="isFieldInvalid('message')"></textarea>
+              <label for="message">
+                <i class="pi pi-comment"></i>
+                Tu mensaje
+              </label>
+            </p-floatlabel>
+            @if (isFieldInvalid('message')) {
+            <small class="error-message">
+              {{ getErrorMessage('message') }}
+            </small>
+            }
+          </div>
+        </div>
+        <div class="submit-section">
+          <p-button type="submit" [label]="isSubmitting() ? 'Enviando...' : 'Enviar mensaje'" icon="pi pi-send"
+            [loading]="isSubmitting()" [disabled]="isSubmitting()" styleClass="submit-button" />
+        </div>
+        @if (submitSuccess()) {
+        <div class="feedback-message success-message">
+          <i class="pi pi-check-circle"></i>
+          <span>¡Mensaje enviado con éxito! Te responderé pronto.</span>
+        </div>
+        } @if (submitError()) {
+        <div class="feedback-message error-message-box">
+          <i class="pi pi-times-circle"></i>
+          <span>Error al enviar el mensaje. Por favor, inténtalo de nuevo.</span>
+        </div>
+        }
+      </form>
+
+      <!-- Sección reservada a mis rrss -->
+      <div class="social-section">
+        <div class="divider">
+          <span> O contactame por </span>
+        </div>
+        <div class="social-links">
+          @for (social of socialLinks; track social.name) {
+          <a [href]="social.url" target="_blank" rel="noopener noreferrer" class="social-link"
+            [attr.aria-label]="social.name">
+            <i class="pi" [ngClass]="social.icon" [style.color]="social.color"></i>
+            <span> {{social.name}}</span>
+          </a>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

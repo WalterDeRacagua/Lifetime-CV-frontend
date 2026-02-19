@@ -1,1 +1,72 @@
-<p>skills works!</p>
+<div class="skills-page">
+  <div class="page-header">
+    <h1 class="page-title">Skills</h1>
+    <p class="page-description">Mis habilidades técnicas y nivel de experiencia</p>
+  </div>
+
+  <!-- Desktop: Radar Chart -->
+  @if (!isMobile()) {
+  <div class="radar-container">
+    <p-chart type="radar" [data]="radarData" [options]="radarOptions" width="90vw" height="60vh" />
+    <p class="chart-note">
+      * El gráfico muestra el nivel promedio de habilidad por categoría
+    </p>
+  </div>
+
+  <!-- Detalles en grid -->
+  <div class="skills-grid">
+    @for (category of categories; track category) {
+    <div class="skill-category-card">
+      <h3 class="category-title">
+        <i class="pi" [ngClass]="getCategoryIcon(category)"></i>
+        {{ category }}
+      </h3>
+      <div class="skills-list">
+        @for (skill of groupedSkills[category]; track skill.name) {
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">{{ skill.name }}</span>
+            <span class="skill-years">{{ skill.years }} años</span>
+          </div>
+          <p-rating [(ngModel)]="skill.level" [readonly]="true" />
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+  }
+
+  <!-- Mobile: Accordion -->
+  @if (isMobile()) {
+  <div class="mobile-accordion-container">
+    <p-accordion [multiple]="true">
+      @for (category of categories; track category) {
+      <p-accordion-panel [value]="category">
+        <p-accordion-header>
+          <div class="accordion-header">
+            <i class="pi" [ngClass]="getCategoryIcon(category)"></i>
+            <span>{{ category }}</span>
+            <span class="skill-count">({{ groupedSkills[category].length }})</span>
+          </div>
+        </p-accordion-header>
+
+        <p-accordion-content>
+          <div class="accordion-skills">
+            @for (skill of groupedSkills[category]; track skill.name) {
+            <div class="mobile-skill-item">
+              <div class="mobile-skill-header">
+                <span class="skill-name">{{ skill.name }}</span>
+                <span class="skill-years">{{ skill.years }} años</span>
+              </div>
+              <p-rating [(ngModel)]="skill.level" [readonly]="true" />
+            </div>
+            }
+          </div>
+        </p-accordion-content>
+      </p-accordion-panel>
+      }
+    </p-accordion>
+  </div>
+  }
+</div>

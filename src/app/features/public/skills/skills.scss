@@ -4,12 +4,47 @@
   max-width: 1400px;
   margin: 0 auto;
   min-height: calc(100vh - 160px);
-  padding: 0 $spacing-md;
+  padding: $spacing-3xl $spacing-md;
+  position: relative;
+  z-index: 1;
 }
 
 .page-header {
   text-align: center;
   margin-bottom: $spacing-xl;
+  @include glass-card;
+  padding: $spacing-3xl;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-xl;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    border-radius: 20px 20px 0 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.8),
+      transparent,
+      rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 20px 0 0 20px;
+  }
 }
 
 .page-title {
@@ -17,127 +52,287 @@
   font-weight: $font-weight-bold;
   color: $gray-900;
   margin-bottom: $spacing-sm;
+  position: relative;
+  z-index: 1;
 }
 
 .page-description {
   font-size: $font-size-lg;
   color: $gray-600;
+  position: relative;
+  z-index: 1;
 }
 
-.radar-container {
-  margin-bottom: $spacing-2xl;
+.table-container {
+  @include glass-card;
   padding: $spacing-xl;
-  background: white;
-  border-radius: $radius-xl;
-  box-shadow: $shadow-md;
-}
-
-.chart-note {
-  text-align: center;
-  color: $gray-500;
-  font-size: $font-size-sm;
-  margin-top: $spacing-md;
-}
-
-// Desktop: Skills Grid
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: $spacing-lg;
+  margin-bottom: $spacing-2xl;
+  position: relative;
 
   @media (max-width: $breakpoint-md) {
-    grid-template-columns: 1fr;
+    padding: $spacing-md;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.8),
+      transparent,
+      rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 20px 0 0 20px;
+    z-index: 1;
   }
 }
 
-.skill-category-card {
-  background: white;
-  padding: $spacing-xl;
-  border-radius: $radius-lg;
-  box-shadow: $shadow-sm;
-}
+:host ::ng-deep {
+  .skills-table {
+    position: relative;
+    z-index: 2;
 
-.category-title {
-  font-size: $font-size-xl;
-  font-weight: $font-weight-semibold;
-  color: $gray-900;
-  margin-bottom: $spacing-lg;
-  display: flex;
-  align-items: center;
-  gap: $spacing-sm;
+    .p-datatable-header,
+    .p-datatable-thead > tr > th,
+    .p-datatable-tbody > tr,
+    .p-paginator {
+      background: transparent !important;
+      border: none !important;
+    }
 
-  i {
-    color: $primary-600;
-    font-size: $font-size-2xl;
+    .p-datatable-thead > tr > th {
+      color: $gray-900;
+      font-weight: $font-weight-semibold;
+      padding: $spacing-md;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .p-datatable-tbody > tr {
+      transition: background $transition-fast;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+      }
+
+      > td {
+        padding: $spacing-md;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: $gray-700;
+      }
+    }
+
+    .p-paginator {
+      padding: $spacing-md;
+      color: $gray-700;
+
+      .p-paginator-current {
+        color: $gray-600;
+      }
+
+      .p-paginator-pages .p-paginator-page {
+        &.p-highlight {
+          background: rgba(255, 255, 255, 0.3);
+          border-color: rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      .p-dropdown {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        color: $gray-900;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.2);
+          border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .p-dropdown-label {
+          color: $gray-900;
+        }
+
+        .p-dropdown-trigger {
+          color: $gray-700;
+        }
+      }
+    }
+
+    .p-dropdown-panel {
+      background: white !important;
+      border: 1px solid rgba(0, 0, 0, 0.2) !important;
+      border-radius: 12px !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+      z-index: 9999 !important;
+
+      .p-dropdown-items {
+        background: white !important;
+
+        .p-dropdown-item {
+          color: $gray-900 !important;
+          background: white !important;
+          transition: background $transition-fast;
+
+          &:hover {
+            background: rgba(59, 130, 246, 0.1) !important;
+          }
+
+          &.p-highlight {
+            background: rgba(59, 130, 246, 0.15) !important;
+            color: $primary-600 !important;
+          }
+        }
+      }
+    }
   }
-}
 
-.skills-list {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-md;
-}
+  .category-chip {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: $gray-900;
+    font-weight: $font-weight-medium;
 
-.skill-item {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-xs;
-}
-
-.skill-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    .p-chip-icon {
+      color: $primary-600;
+    }
+  }
 }
 
 .skill-name {
-  font-weight: $font-weight-medium;
+  font-weight: $font-weight-semibold;
   color: $gray-900;
 }
 
 .skill-years {
+  color: $gray-600;
   font-size: $font-size-sm;
-  color: $gray-500;
 }
 
-.accordion-header {
-  display: flex;
-  align-items: center;
-  gap: $spacing-sm;
+.radar-container {
+  @include glass-card;
+  padding: $spacing-xl;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    border-radius: 20px 20px 0 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.8),
+      transparent,
+      rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 20px 0 0 20px;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.chart-title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $gray-900;
+  margin-bottom: $spacing-lg;
+  text-align: center;
+}
+
+.chart-note {
+  text-align: center;
+  color: $gray-600;
+  font-size: $font-size-sm;
+  margin-top: $spacing-md;
+}
+
+.background-decoration {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
 
-  i {
-    color: $primary-600;
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.6;
+  animation: float 20s infinite ease-in-out;
+
+  &.orb-1 {
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, $primary-500, $primary-600);
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
   }
 
-  .skill-count {
-    margin-left: auto;
-    color: $gray-500;
-    font-size: $font-size-sm;
-    margin-right: 1rem;
+  &.orb-2 {
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    bottom: -100px;
+    right: -100px;
+    animation-delay: 5s;
+  }
+
+  &.orb-3 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 10s;
   }
 }
 
-.accordion-skills {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-lg;
-  padding-bottom: $spacing-3xl;
-}
-
-.mobile-skill-item {
-  padding: $spacing-md;
-  background: $gray-50;
-  border-radius: $radius-md;
-}
-
-.mobile-skill-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: $spacing-sm;
-}
-
-::ng-deep p-accordion {
-  display: block !important;
-  min-height: 400px;
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(30px, -30px);
+  }
+  66% {
+    transform: translate(-20px, 20px);
+  }
 }

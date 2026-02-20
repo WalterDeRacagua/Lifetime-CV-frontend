@@ -5,6 +5,8 @@ import { AccordionModule } from 'primeng/accordion';
 import { Rating } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { Tooltip } from 'primeng/tooltip';
+import { TableModule } from 'primeng/table';
+import { ChipModule } from 'primeng/chip';
 
 interface Skill {
   name: string;
@@ -15,7 +17,16 @@ interface Skill {
 
 @Component({
   selector: 'app-skills',
-  imports: [CommonModule, AccordionModule, UIChart, Rating, FormsModule, Tooltip],
+  imports: [
+    CommonModule,
+    AccordionModule,
+    UIChart,
+    Rating,
+    FormsModule,
+    Tooltip,
+    TableModule,
+    ChipModule,
+  ],
   templateUrl: './skills.html',
   styleUrl: './skills.scss',
 })
@@ -120,10 +131,11 @@ export class Skills {
 
   getCategoryIcon(category: string): string {
     const icons: Record<string, string> = {
-      Frontend: 'pi-desktop',
-      Backend: 'pi-server',
-      Database: 'pi-database',
-      DevOps: 'pi-cog',
+      Frontend: 'pi pi-desktop',
+      Backend: 'pi pi-server',
+      Database: 'pi pi-database',
+      DevOps: 'pi pi-cog',
+      Personal: 'pi pi-user',
     };
     return icons[category] || 'pi-code';
   }

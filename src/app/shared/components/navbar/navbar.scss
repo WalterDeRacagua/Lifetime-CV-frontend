@@ -1,21 +1,293 @@
 @import '../../../../variables';
 
+:host ::ng-deep {
+  .custom-menubar {
+    @include glass-card;
+    border-radius: 0;
+    margin: 0;
+    padding: $spacing-md $spacing-xl;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: $z-fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.5), transparent);
+      z-index: 1;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(139, 92, 246, 0.5),
+        transparent,
+        rgba(139, 92, 246, 0.2)
+      );
+      z-index: 1;
+    }
+
+    .p-menubar-start {
+      flex: 0 0 auto;
+      position: relative;
+      z-index: 2;
+      margin-right: 0;
+    }
+
+    .p-menubar-root-list {
+      flex: 1;
+      display: none !important;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+
+      @media (min-width: ($breakpoint-lg + 1)) {
+        display: flex !important;
+      }
+    }
+
+    .p-menubar-end {
+      flex: 0 0 auto;
+      position: relative;
+      z-index: 2;
+      margin-left: 0;
+    }
+
+    .p-menubar-button {
+      display: none !important;
+    }
+
+    .p-menuitem-link {
+      color: #d1d5db !important;
+      font-weight: $font-weight-medium;
+      border-radius: $radius-md;
+      transition: all $transition-fast;
+
+      &:hover {
+        background: rgba(139, 92, 246, 0.1) !important;
+        color: #f9fafb !important;
+      }
+
+      &.router-link-active {
+        background: rgba(139, 92, 246, 0.15) !important;
+        color: #f9fafb !important;
+      }
+    }
+
+    .p-menuitem-icon {
+      color: $primary-500;
+    }
+
+    .p-button {
+      @media (max-width: $breakpoint-lg) {
+        display: none !important;
+      }
+    }
+  }
+}
+
 .brand {
   display: flex;
   align-items: center;
   gap: $spacing-sm;
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $gray-900;
-  margin-right: $spacing-xl;
+  color: #f9fafb;
   user-select: none;
-
-  i {
-    color: $primary-600;
-    font-size: $font-size-2xl;
-  }
+  position: relative;
+  z-index: 2;
+  margin: 0;
 }
 
 .brand-text {
   cursor: pointer;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $primary-500;
+  }
+}
+
+.hamburger-btn {
+  display: none;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #f9fafb;
+  backdrop-filter: blur(8px);
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: all $transition-fast;
+  font-size: $font-size-xl;
+  margin: 0;
+
+  @media (max-width: $breakpoint-lg) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:hover {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: rgba(139, 92, 246, 0.5);
+    transform: translateY(-2px);
+  }
+
+  &.active {
+    background: rgba(139, 92, 246, 0.25);
+  }
+
+  i {
+    color: $primary-500;
+  }
+}
+
+.admin-btn-desktop {
+  @media (max-width: $breakpoint-lg) {
+    display: none !important;
+  }
+}
+
+:host ::ng-deep .p-button {
+  background: rgba(139, 92, 246, 0.1) !important;
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  color: #f9fafb !important;
+  backdrop-filter: blur(8px);
+
+  &:hover {
+    background: rgba(139, 92, 246, 0.2) !important;
+    border-color: rgba(139, 92, 246, 0.5) !important;
+    transform: translateY(-2px);
+  }
+
+  .p-button-icon {
+    color: $primary-500;
+  }
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(20px);
+  padding: $spacing-xl;
+  z-index: 1029;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-lg;
+  max-width: 400px;
+  margin: 0 auto;
+
+  @media (max-width: 400px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.mobile-menu-bubble {
+  @include glass-card;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all $transition-base;
+  border-radius: 50%;
+  margin: 0 auto;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.8), transparent);
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(139, 92, 246, 0.8),
+      transparent,
+      rgba(139, 92, 246, 0.3)
+    );
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  i {
+    font-size: 2rem;
+    color: $primary-500;
+    position: relative;
+    z-index: 2;
+    transition: all $transition-fast;
+  }
+
+  &:hover {
+    transform: translateY(-8px) scale(1.1);
+    box-shadow:
+      0 16px 48px rgba(0, 0, 0, 1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 0 12px 6px rgba(139, 92, 246, 0.2);
+
+    i {
+      transform: scale(1.2);
+    }
+  }
+
+  &:active {
+    transform: translateY(-4px) scale(1.05);
+  }
+}
+
+.admin-bubble {
+  i {
+    color: #ec4899;
+  }
+}
+
+:host ::ng-deep .p-tooltip {
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #f9fafb;
+  font-weight: $font-weight-medium;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-md;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+  .p-tooltip-arrow {
+    border-bottom-color: rgba(10, 10, 15, 0.95);
+  }
 }

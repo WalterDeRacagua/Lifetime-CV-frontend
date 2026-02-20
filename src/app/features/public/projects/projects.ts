@@ -3,6 +3,7 @@ import { Button } from 'primeng/button';
 import { Chip } from 'primeng/chip';
 import { Dialog } from 'primeng/dialog';
 import { CommonModule } from '@angular/common';
+import { ScrollReveal } from '../../../shared/directives/scroll-reveal';
 
 interface Project {
   id: number;
@@ -18,7 +19,7 @@ interface Project {
 
 @Component({
   selector: 'app-projects',
-  imports: [Button, Chip, Dialog, CommonModule],
+  imports: [Button, Chip, Dialog, CommonModule, ScrollReveal],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
 })

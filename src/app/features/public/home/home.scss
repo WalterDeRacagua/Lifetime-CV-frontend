@@ -1,6 +1,7 @@
 @import '../../../../variables';
 
 .home {
+  padding-top: 80px;
   display: flex;
   flex-direction: column;
   gap: $spacing-3xl;

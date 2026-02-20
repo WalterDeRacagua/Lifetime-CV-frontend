@@ -5,6 +5,7 @@ import { FloatLabel } from 'primeng/floatlabel';
 import { InputText } from 'primeng/inputtext';
 import { Textarea } from 'primeng/textarea';
 import { Button } from 'primeng/button';
+import { Toast } from 'primeng/toast';
 @Component({
   selector: 'app-contact',
   imports: [CommonModule, ReactiveFormsModule, FloatLabel, InputText, Textarea, Button],

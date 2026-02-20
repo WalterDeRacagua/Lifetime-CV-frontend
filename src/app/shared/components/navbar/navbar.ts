@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Menubar } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
 import { Button } from 'primeng/button';
 
 @Component({
   selector: 'app-navbar',
-  imports: [Menubar, Button],
+  imports: [Menubar, Button, RouterLink],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
 })

@@ -3,7 +3,7 @@
 .contact-page {
   position: relative;
   min-height: calc(100vh - 160px);
-  padding: $spacing-xl $spacing-md;
+  padding: 0 $spacing-md;
   overflow: hidden;
 }
 
@@ -95,7 +95,7 @@
 
 // Glassmorphism Card
 .glass-card {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(20px);
   border-radius: $radius-2xl;
   padding: $spacing-3xl;

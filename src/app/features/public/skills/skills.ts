@@ -33,6 +33,10 @@ export class Skills {
     { name: 'MongoDB', level: 3, years: 2, category: 'Database' },
     { name: 'Docker', level: 4, years: 3, category: 'DevOps' },
     { name: 'Git', level: 5, years: 5, category: 'DevOps' },
+    { name: 'Liderazgo', level: 1, years: 1, category: 'Personal' },
+    { name: 'Alegría', level: 1, years: 1, category: 'Personal' },
+    { name: 'Tranquilidad', level: 1, years: 1, category: 'Personal' },
+    { name: 'Comunicación', level: 2, years: 1, category: 'Personal' },
   ];
 
   radarData: unknown;
@@ -56,7 +60,7 @@ export class Skills {
   }
 
   prepareRadarData() {
-    const categories = ['Frontend', 'Backend', 'Database', 'DevOps'];
+    const categories = ['Frontend', 'Backend', 'Database', 'DevOps', 'Personal'];
     const data = categories.map((cat) => {
       const categorySkills = this.skills.filter((s) => s.category === cat);
       const avgLevel = categorySkills.reduce((sum, s) => sum + s.level, 0) / categorySkills.length;

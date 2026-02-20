@@ -104,22 +104,28 @@
 .brand {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: $spacing-sm;
-  font-size: $font-size-lg;
-  font-weight: $font-weight-bold;
-  color: #f9fafb;
   user-select: none;
   position: relative;
   z-index: 2;
   margin: 0;
-}
-
-.brand-text {
   cursor: pointer;
-  transition: color $transition-fast;
+  transition: transform $transition-fast;
 
   &:hover {
-    color: $primary-500;
+    transform: scale(1.05);
+  }
+}
+
+.brand-logo {
+  height: 90px;
+  width: 100px;
+  width: auto;
+  transition: filter $transition-fast;
+
+  .brand:hover & {
+    filter: brightness(1.2);
   }
 }
 

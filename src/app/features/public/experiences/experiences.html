@@ -12,8 +12,7 @@
 
   <p-timeline [value]="experiences" styleClass="custom-timeline">
     <ng-template #marker let-experience>
-      <div class="timeline-marker" [pTooltip]="experience.position + ' en ' + experience.company" tooltipPosition="left"
-        (click)="toggleExpand(experience)" (keyup.enter)="toggleExpand(experience)"
+      <div class="timeline-marker" (click)="toggleExpand(experience)" (keyup.enter)="toggleExpand(experience)"
         (keyup.space)="toggleExpand(experience)" tabindex="0" role="button" [attr.aria-expanded]="experience.expanded"
         [attr.aria-label]="'Expandir detalles de ' + experience.company">
         <i class="pi pi-briefcase"></i>

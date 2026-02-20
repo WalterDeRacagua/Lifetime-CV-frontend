@@ -1,13 +1,49 @@
 @import '../../../../variables';
 
 .projects-page {
+  padding-top: $spacing-3xl;
   max-width: 100%;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .page-header {
   text-align: center;
-  margin-bottom: $spacing-3xl;
+  margin-bottom: $spacing-xl;
+  @include glass-card;
+  padding: $spacing-3xl;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-xl;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    border-radius: 20px 20px 0 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.8),
+      transparent,
+      rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 20px 0 0 20px;
+  }
 }
 
 .page-title {
@@ -15,11 +51,15 @@
   font-weight: $font-weight-bold;
   color: $gray-900;
   margin-bottom: $spacing-sm;
+  position: relative;
+  z-index: 1;
 }
 
 .page-description {
   font-size: $font-size-lg;
   color: $gray-600;
+  position: relative;
+  z-index: 1;
 }
 
 .bento-grid {
@@ -40,15 +80,50 @@
 }
 
 .bento-item {
-  border-radius: $radius-xl;
-  overflow: hidden;
+  position: relative;
   cursor: pointer;
+  padding: 8px;
+  @include glass-card;
   transition:
     transform $transition-base,
     box-shadow $transition-base;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    border-radius: 20px 20px 0 0;
+    z-index: 2;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.8),
+      transparent,
+      rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 20px 0 0 20px;
+    z-index: 2;
+  }
+
   &:hover {
     transform: translateY(-4px);
-    box-shadow: $shadow-xl;
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 0 6px 3px rgba(255, 255, 255, 0.4);
 
     .bento-overlay {
       opacity: 1;
@@ -95,7 +170,18 @@
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.bento-content {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
   position: relative;
 }
 
@@ -161,5 +247,64 @@
 
   a {
     text-decoration: none;
+  }
+}
+
+.background-decoration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.6;
+  animation: float 20s infinite ease-in-out;
+
+  &.orb-1 {
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, $primary-500, $primary-600);
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+  }
+
+  &.orb-2 {
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    bottom: -100px;
+    right: -100px;
+    animation-delay: 5s;
+  }
+
+  &.orb-3 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 10s;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(30px, -30px);
+  }
+  66% {
+    transform: translate(-20px, 20px);
   }
 }

@@ -1,4 +1,9 @@
 <div class="projects-page">
+  <div class="background-decoration">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+  </div>
   <div class="page-header">
     <h1 class="page-title">Proyectos</h1>
     <p class="page-description">Algunos de mis trabajos más destacados</p>
@@ -9,7 +14,7 @@
     @for (project of projects; track project.id) {
     <div [class]="'bento-item bento-item-' + project.id" (click)="openDialog(project)"
       (keyup.enter)="openDialog(project)" (keyup.space)="openDialog(project)" tabindex="0" role="button"
-      [attr.aria-label]="'Ver detalles de ' + project.name">
+      [attr.aria-label]="'Ver detalles de ' + project.name" appScrollReveal>
       <div class="bento-content" [style.background-image]="'url(' + project.imageUrl + ')'">
         <div class="bento-overlay">
           <div class="bento-info">

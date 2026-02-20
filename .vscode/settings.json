@@ -10,10 +10,23 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "files.autoSave": "onFocusChange",
   "workbench.colorCustomizations": {
-    "activityBar.background": "#a80021",
-    "titleBar.activeBackground": "#dd0031",
-    "titleBar.activeForeground": "#ffffff",
+    "activityBar.background": "#db002b",
+    "titleBar.activeBackground": "#a80021",
+    "titleBar.activeForeground": "#e7e7e7",
     "statusBar.background": "#a80021",
-    "statusBar.foreground": "#ffffff"
-  }
+    "statusBar.foreground": "#e7e7e7",
+    "activityBar.activeBackground": "#db002b",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#26bf00",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#db002b",
+    "statusBarItem.hoverBackground": "#db002b",
+    "statusBarItem.remoteBackground": "#a80021",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#a8002199",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#a80021"
 }

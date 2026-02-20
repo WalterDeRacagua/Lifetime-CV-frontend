@@ -3,11 +3,10 @@
 .contact-page {
   position: relative;
   min-height: calc(100vh - 160px);
-  padding: 0 $spacing-md;
+  padding: $spacing-3xl $spacing-md;
   overflow: hidden;
 }
 
-// Background decorativo
 .background-decoration {
   position: fixed;
   top: 0;
@@ -77,6 +76,39 @@
 .contact-header {
   text-align: center;
   margin-bottom: $spacing-xl;
+  @include glass-card;
+  padding: $spacing-3xl;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-xl;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    border-radius: 20px 20px 0 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.8),
+      transparent,
+      rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 20px 0 0 20px;
+  }
 }
 
 .contact-title {
@@ -84,6 +116,8 @@
   font-weight: $font-weight-bold;
   color: $gray-900;
   margin-bottom: $spacing-md;
+  position: relative;
+  z-index: 1;
 }
 
 .contact-description {
@@ -91,27 +125,62 @@
   color: $gray-600;
   max-width: 600px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-// Glassmorphism Card
 .glass-card {
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(20px);
-  border-radius: $radius-2xl;
+  @include glass-card;
   padding: $spacing-3xl;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.18);
   transition:
     transform 300ms ease,
     box-shadow 300ms ease;
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.8),
+      transparent,
+      rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 20px 0 0 20px;
+    z-index: 1;
+  }
+
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+    box-shadow:
+      0 12px 48px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 0 6px 3px rgba(255, 255, 255, 0.4);
   }
 
   @media (max-width: $breakpoint-md) {
     padding: $spacing-xl;
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
   }
 }
 
@@ -152,21 +221,30 @@
   textarea {
     width: 100%;
     padding: $spacing-md;
-    border: 2px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: $radius-md;
     font-size: $font-size-base;
     transition: all 300ms ease;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    color: $gray-900;
+
+    &::placeholder {
+      color: rgba(107, 114, 128, 0.6);
+    }
 
     &:focus {
       outline: none;
-      border-color: $primary-500;
-      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow:
+        0 0 0 4px rgba(59, 130, 246, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
       transform: translateY(-2px);
     }
 
     &.p-invalid {
-      border-color: #ef4444;
+      border-color: rgba(239, 68, 68, 0.5);
 
       &:focus {
         box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
@@ -206,7 +284,6 @@
   }
 }
 
-// Submit section
 .submit-section {
   display: flex;
   justify-content: center;
@@ -233,7 +310,6 @@
   }
 }
 
-// Feedback messages
 .feedback-message {
   padding: $spacing-md;
   border-radius: $radius-md;
@@ -279,7 +355,6 @@
   }
 }
 
-// Social section
 .social-section {
   margin-top: $spacing-3xl;
 }
@@ -296,7 +371,7 @@
     top: 50%;
     width: 35%;
     height: 1px;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.3);
   }
 
   &::before {
@@ -327,7 +402,9 @@
   align-items: center;
   gap: $spacing-sm;
   padding: $spacing-md $spacing-xl;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: $radius-full;
   text-decoration: none;
   color: $gray-700;
@@ -341,6 +418,8 @@
 
   &:hover {
     transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   }
 

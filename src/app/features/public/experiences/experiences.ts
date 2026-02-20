@@ -45,6 +45,17 @@ export class Experiences {
         'Desarrollo full-stack de soluciones web para clientes del sector financiero. Implementación de microservicios con Node.js y Angular. Integración con APIs REST y bases de datos PostgreSQL. Despliegue en AWS.',
       expanded: false,
     },
+    {
+      company: 'Accenture',
+      position: 'Software Engineer',
+      location: 'Madrid, España',
+      startDate: '2020',
+      endDate: '2022',
+      isCurrent: false,
+      description:
+        'Desarrollo full-stack de soluciones web para clientes del sector financiero. Implementación de microservicios con Node.js y Angular. Integración con APIs REST y bases de datos PostgreSQL. Despliegue en AWS.',
+      expanded: false,
+    },
   ];
 
   toggleExpand(experience: Experience) {
